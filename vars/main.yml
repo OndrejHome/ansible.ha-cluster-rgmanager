@@ -1,0 +1,6 @@
+---
+rgmanager_packages:
+ - openais
+ - cman
+ - rgmanager
+ - ricci
