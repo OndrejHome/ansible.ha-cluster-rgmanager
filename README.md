@@ -16,7 +16,13 @@ Role Variables
 
     ```
     cluster_user: ricci
+    ```
+
+    ```
     cluster_user_pass: testtest
+    ```
+
+    ```
     cluster_group: ricci
     ```
 
