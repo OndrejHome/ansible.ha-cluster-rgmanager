@@ -27,8 +27,12 @@
 {% endif %}
         <rm/>
 {% if play_hosts|count() > 2 %}
-        <cman expected_votes="{{ play_hosts|count() }}" transport="udp"/>
+        <cman expected_votes="{{ play_hosts|count() }}" transport="udp">
 {% else %}
-        <cman expected_votes="1" transport="udp" two_node="1"/>
+        <cman expected_votes="1" transport="udp" two_node="1">
 {% endif %}
+{% if multicast_address is defined %}
+	<multicast addr="{{ multicast_address }}"/>
+{% endif %}
+	</cman>
 </cluster>

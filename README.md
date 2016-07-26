@@ -51,6 +51,11 @@ Role Variables
     ```
     cluster_configure_fence_xvm: true
     ```
+  - use custom multicast address for cluster communication (by default cluster generates
+    multicast address based on cluster ID)
+    ```
+    multicast_address: 239.192.1.2
+    ```
 
 Example Playbook
 ----------------
