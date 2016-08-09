@@ -9,7 +9,7 @@ galaxy_info:
     versions:
     - 5
     - 6
-  categories:
+  galaxy_tags:
   - clustering
   - clustering:rgmanager
 dependencies: []
