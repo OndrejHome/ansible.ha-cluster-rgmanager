@@ -21,7 +21,7 @@
 - name: Create 'ricci' user for cluster
   user: 
     name={{ cluster_user }} state=present
-    password={{ cluster_user_pass | password_hash('sha512', ansible_hostname) }}
+    password={{ cluster_user_pass | password_hash('sha512', ansible_hostname|replace('-','x')) }}
 
 - name: Enable and start ricci service
   service: name=ricci enabled=yes state=started
