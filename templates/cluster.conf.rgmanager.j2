@@ -1,13 +1,11 @@
-{% set nodeid = '0' -%}
 <?xml version="1.0"?>
 <!-- {{ ansible_managed }} -->
 <cluster config_version="1" name="{{ cluster_name }}">
         <fence_daemon post_join_delay="30"/>
         <clusternodes>
 {% for item in play_hosts %}
-{% set nodeid = nodeid | int + 1 %}
 {% set short_name = hostvars[item]['ansible_fqdn'].split('.') %}
-                <clusternode name="{{ short_name[0] }}" nodeid="{{ nodeid }}">
+                <clusternode name="{{ short_name[0] }}" nodeid="{{ loop.index }}">
 {% if cluster_configure_fence_xvm == true %}
                         <fence>
 				<method name="1">
