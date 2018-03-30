@@ -58,6 +58,29 @@ Role Variables
     multicast_address: 239.192.1.2
     ```
 
+  - (RHEL only) enable the repositories containint packages needed
+    ```
+    enable_repos: true
+    ```
+
+  - (RHEL only) enable the extended update (EUS) repositories containint packages ne
+eded
+    ```
+    enable_eus_repos: false
+    ```
+
+  - (RHEL only) enable Beta repositories containint packages needed
+    ```
+    enable_beta_repos: false
+    ```
+
+  - (RHEL only) type of enable repositories
+    - ha - High-Availability
+    - rs - Resilient Storage
+    ```
+    repos_type: 'ha'
+    ```
+
 Example Playbook
 ----------------
 
