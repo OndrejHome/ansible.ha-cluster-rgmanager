@@ -33,3 +33,9 @@ enable_beta_repos: false
 # - ha - High Availability channel
 # - rs - Resilient Storage channel
 repos_type: 'ha'
+
+# Cluster transport protocol
+# avaialble options:
+# 'udp' - UDP multicast (default)
+# 'udpu' - UDP unicast
+cluster_transport: 'udp'

@@ -81,6 +81,11 @@ eded
     repos_type: 'ha'
     ```
 
+  - Cluster transport protocol. Available options are 'udp' (UDP multicast) and 'udpu' (UDP unicast).
+    ```
+    cluster_transport: 'udp'
+    ```
+
 Example Playbook
 ----------------
 
