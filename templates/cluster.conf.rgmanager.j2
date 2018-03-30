@@ -9,7 +9,7 @@
 {% if cluster_configure_fence_xvm == true %}
                         <fence>
 				<method name="1">
-					<device domain="{{ hostvars[item]['hypervisor_hostname'] }}" name="virtfence"/>
+					<device domain="{{ hostvars[item]['vm_name'] }}" name="virtfence"/>
 				</method>
                         </fence>
 {% endif %}
