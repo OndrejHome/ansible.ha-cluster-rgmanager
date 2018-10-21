@@ -1,6 +1,7 @@
 ---
 - name: Check if cluster consist of at least 2 nodes
-  fail: msg="Cluster must have at least 2 members"
+  fail:
+    msg: 'Cluster must have at least 2 members'
   when: play_hosts|count() < 2
 
 - name: (RHEL only) enable repositories
@@ -8,7 +9,9 @@
   when: ansible_distribution == 'RedHat'
 
 - name: Install libselinux-python to work with SELinux setting
-  yum: name=libselinux-python state=installed
+  yum:
+    name: 'libselinux-python'
+    state: 'installed'
 
 # TODO allow to choose if to use FQDN or just short hostname, defaulting to short hostname
 # WARNING: the 'ansible_fqdn' is resolved from /etc/hosts file! If you change hostname
@@ -22,45 +25,64 @@
   with_items: "{{ play_hosts }}"
 
 - name: Install rgmanager cluster packages to all nodes
-  yum: name={{ item }} state=installed
-  with_items: 
+  yum:
+    name: "{{ item }}"
+    state: 'installed'
+  with_items:
     - "{{ rgmanager_packages }}"
 
 - name: Create 'ricci' system group for cluster
-  group: name={{ cluster_group }} state=present
+  group:
+    name: "{{ cluster_group }}"
+    state: 'present'
 - name: Create 'ricci' user for cluster
-  user: 
-    name={{ cluster_user }} state=present
-    password={{ cluster_user_pass | password_hash('sha512', ansible_hostname|replace('-','x')|truncate(16, True, '')) }}
+  user:
+    name: "{{ cluster_user }}"
+    state: 'present'
+    password: "{{ cluster_user_pass | password_hash('sha512', ansible_hostname|replace('-','x')|truncate(16, True, '', 0)) }}"
 
 - name: Enable and start ricci service
-  service: name=ricci enabled=yes state=started
+  service:
+    name: 'ricci'
+    enabled: true
+    state: 'started'
 
 - name: Setup iptables firewall
   include_tasks: firewall.yml
   when: cluster_firewall|bool
 
 - name: create /etc/cluster directory
-  file: path=/etc/cluster state=directory
+  file:
+    path: '/etc/cluster'
+    state: 'directory'
 
 - name: Copy fence_xvm key
-  copy: src=/etc/cluster/fence_xvm.key dest=/etc/cluster/fence_xvm.key owner=root group=root mode=0640
+  copy:
+    src: '/etc/cluster/fence_xvm.key'
+    dest: '/etc/cluster/fence_xvm.key'
+    owner: 'root'
+    group: 'root'
+    mode: '0640'
   when: cluster_configure_fence_xvm|bool
 
 - name: Generate and copy /etc/cluster/cluster.conf
   template:
-    src=cluster.conf.rgmanager.j2
-    dest=/etc/cluster/cluster.conf
+    src: 'cluster.conf.rgmanager.j2'
+    dest: '/etc/cluster/cluster.conf'
 #    validate='ccs_config_validate -f %s'
 
 - name: Start cluster services on all nodes
-  service: name={{ item }} state=started
+  service:
+    name: "{{ item }}"
+    state: 'started'
   with_items:
     - cman
     - rgmanager
 
 - name: Enable cluster services on boot
-  service: name={{ item }} enabled=yes
+  service:
+    name: "{{ item }}"
+    enabled: true
   when: cluster_enable_service|bool
   with_items:
     - cman

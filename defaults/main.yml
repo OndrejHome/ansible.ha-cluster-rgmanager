@@ -1,11 +1,11 @@
 ---
 # user and group for ricci user
-cluster_user: ricci
-cluster_user_pass: ricci
-cluster_group: ricci
+cluster_user: 'ricci'
+cluster_user_pass: 'ricci'
+cluster_group: 'ricci'
 
 # name of the cluster
-cluster_name: rgmanager
+cluster_name: 'rgmanager'
 
 # configuration of firewall for clustering, NOTE in RHEL/Centos 6 this replaces iptables configuration file!
 cluster_firewall: true
