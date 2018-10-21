@@ -15,21 +15,21 @@ Role Variables
   - user and group for ricci daemon (for most deployments doesn't need changing except password)
 
     ```
-    cluster_user: ricci
+    cluster_user: 'ricci'
     ```
 
     ```
-    cluster_user_pass: testtest
+    cluster_user_pass: 'testtest'
     ```
 
     ```
-    cluster_group: ricci
+    cluster_group: 'ricci'
     ```
 
   - name of the cluster
 
     ```
-    cluster_name: rgmanager
+    cluster_name: 'rgmanager'
     ```
 
   - configuration of firewall for clustering, NOTE this replaces iptables configuration file!
@@ -55,7 +55,7 @@ Role Variables
   - use custom multicast address for cluster communication (by default cluster generates
     multicast address based on cluster ID)
     ```
-    multicast_address: 239.192.1.2
+    multicast_address: '239.192.1.2'
     ```
 
   - (RHEL only) enable the repositories containint packages needed
@@ -93,14 +93,14 @@ Example playbook for creating cluster named 'test1' enabled on boot, with fence_
 
     - hosts: servers
       roles:
-         - { role: OndrejHome.ha-cluster-rgmanager, cluster_name: 'test1' }
+         - { role: 'OndrejHome.ha-cluster-rgmanager', cluster_name: 'test1' }
 
 Example for creating cluster named 'test2' without configuring firewalling and without fence_xvm.
 For cluster to get properly authorize it is expected that firewall is already configured or disabled.
 
     - hosts: servers
       roles:
-         - { role: OndrejHome.ha-cluster-rgmanager, cluster_name: 'test2', cluster_firewall: false, cluster_configure_fence_xvm: false }
+         - { role: 'OndrejHome.ha-cluster-rgmanager', cluster_name: 'test2', cluster_firewall: false, cluster_configure_fence_xvm: false }
 
 License
 -------
