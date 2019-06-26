@@ -102,6 +102,12 @@ For cluster to get properly authorize it is expected that firewall is already co
       roles:
          - { role: 'OndrejHome.ha-cluster-rgmanager', cluster_name: 'test2', cluster_firewall: false, cluster_configure_fence_xvm: false }
 
+Inventory file example for CentOS/RHEL.
+
+    [cluster-el]
+    192.168.22.21 vm_name=fastvm-centos-6.10-21
+    192.168.22.22 vm_name=fastvm-centos-6.10-22
+
 License
 -------
 
