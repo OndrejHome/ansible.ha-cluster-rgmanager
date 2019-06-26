@@ -26,10 +26,8 @@
 
 - name: Install rgmanager cluster packages to all nodes
   yum:
-    name: "{{ item }}"
+    name: "{{ rgmanager_packages }}"
     state: 'installed'
-  with_items:
-    - "{{ rgmanager_packages }}"
 
 - name: Create 'ricci' system group for cluster
   group:
