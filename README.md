@@ -93,14 +93,14 @@ Example playbook for creating cluster named 'test1' enabled on boot, with fence_
 
     - hosts: servers
       roles:
-         - { role: 'OndrejHome.ha-cluster-rgmanager', cluster_name: 'test1' }
+         - { role: 'ondrejhome.ha-cluster-rgmanager', cluster_name: 'test1' }
 
 Example for creating cluster named 'test2' without configuring firewalling and without fence_xvm.
 For cluster to get properly authorize it is expected that firewall is already configured or disabled.
 
     - hosts: servers
       roles:
-         - { role: 'OndrejHome.ha-cluster-rgmanager', cluster_name: 'test2', cluster_firewall: false, cluster_configure_fence_xvm: false }
+         - { role: 'ondrejhome.ha-cluster-rgmanager', cluster_name: 'test2', cluster_firewall: false, cluster_configure_fence_xvm: false }
 
 Inventory file example for CentOS/RHEL.
 
