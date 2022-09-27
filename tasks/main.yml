@@ -56,6 +56,9 @@
   file:
     path: '/etc/cluster'
     state: 'directory'
+    owner: 'root'
+    group: 'root'
+    mode: '0750'
 
 - name: Copy fence_xvm key
   copy:
@@ -70,6 +73,9 @@
   template:
     src: 'cluster.conf.rgmanager.j2'
     dest: '/etc/cluster/cluster.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0640'
 #    validate='ccs_config_validate -f %s'
 
 - name: Start cluster services on all nodes
