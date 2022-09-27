@@ -3,6 +3,16 @@ ha-cluster-rgmanager
 
 Role for configuring basic rgmanager high-availability cluster on CentOS/RHEL 5/6 systems.
 
+ROLE RETIREMENT NOTICE
+----------------------
+
+As the 'rgmanager' is not developed for long time no new development is planned for this role.
+
+Last time the functionality of role was tested (2022-09-27) with following parameters:
+- CentOS 7.9 host running Ansible 2.4
+- against CentOS 6.10 machines to create cluster
+- against RHEL 6.10 machines to create cluster
+
 Requirements
 ------------
 
@@ -116,7 +126,4 @@ GPLv3
 Author Information
 ------------------
 
-WARNING: this is alpha-version quality proof-of-concept role that still needs some polishing. 
-         This is suitable for testing purposes only.
-
-To get in touch with author you can use email ondrej-xa2iel8u@famera.cz or create a issue on github when requesting some feature.
+To get in touch with author you can use email ondrej-xa2iel8u@famera.cz or create a issue on github.
